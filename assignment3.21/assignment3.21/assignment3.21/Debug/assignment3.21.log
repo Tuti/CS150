@@ -1,0 +1,4 @@
+﻿  assignment321.cpp
+c:\users\josie\github\cs150\assignment3.21\assignment3.21\assignment3.21\assignment321.cpp(24): warning C4101: 'interestPaid': unreferenced local variable
+  assignment3.21.vcxproj -> C:\Users\Josie\GitHub\CS150\assignment3.21\assignment3.21\Debug\assignment3.21.exe
+  assignment3.21.vcxproj -> C:\Users\Josie\GitHub\CS150\assignment3.21\assignment3.21\Debug\assignment3.21.pdb (Partial PDB)
