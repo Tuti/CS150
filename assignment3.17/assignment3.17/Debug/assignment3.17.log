@@ -1,4 +1,6 @@
-﻿  assignment317.cpp
-c:\users\joseh\github\cs150\assignment3.17\assignment3.17\assignment317.cpp(38): warning C4101: 'taxRate': unreferenced local variable
-  assignment3.17.vcxproj -> C:\Users\joseh\Github\CS150\assignment3.17\Debug\assignment3.17.exe
-  assignment3.17.vcxproj -> C:\Users\joseh\Github\CS150\assignment3.17\Debug\assignment3.17.pdb (Partial PDB)
+﻿  stdafx.cpp
+  assignment317.cpp
+c:\users\josie\github\cs150\assignment3.17\assignment3.17\assignment317.cpp(38): warning C4101: 'taxRate': unreferenced local variable
+  LINK : C:\Users\Josie\GitHub\CS150\assignment3.17\Debug\assignment3.17.exe not found or not built by the last incremental link; performing full link
+  assignment3.17.vcxproj -> C:\Users\Josie\GitHub\CS150\assignment3.17\Debug\assignment3.17.exe
+  assignment3.17.vcxproj -> C:\Users\Josie\GitHub\CS150\assignment3.17\Debug\assignment3.17.pdb (Partial PDB)
