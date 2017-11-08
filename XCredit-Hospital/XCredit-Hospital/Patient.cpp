@@ -102,19 +102,15 @@ OutPatient::OutPatient()
 	
 	serviceCharges = 0.0;
 	medicationCharges = 0.0;
-
-
 }
 
 OutPatient::OutPatient(const string name, const double serviceCharges, const double medicationCharges)
 {
 	//is this the best way to do this, convention wise? (using this pointer) @June
 
-
 	this->name = name;
 	this->serviceCharges = serviceCharges;
 	this->medicationCharges = medicationCharges;
-
 }
 
 /* Getters */
