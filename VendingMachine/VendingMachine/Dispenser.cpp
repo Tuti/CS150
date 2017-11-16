@@ -2,6 +2,7 @@
 #include "Dispenser.h"
 #include <string>
 
+ static const int  DEFAULT_ITEM_COUNT = 10;
 /*** Start Defintion of Dispenser ***/
 Dispenser::Dispenser()
 {
@@ -10,6 +11,14 @@ Dispenser::Dispenser()
 	this->isEmpty = true;
 	this->snack = Snack();
 
+}
+
+Dispenser::Dispenser(const string dispenserName, bool isEmpty, Snack snack)
+{
+	this->dispenserName = dispenserName;
+	this->itemCount = DEFAULT_ITEM_COUNT;
+	this->isEmpty = isEmpty;
+	this->snack = snack;
 }
 
 Dispenser::Dispenser(const string dispenserName, int itemCount, bool isEmpty, Snack snack )

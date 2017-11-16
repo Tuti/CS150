@@ -19,9 +19,17 @@ the dispenser class should include string itemName, double itemcost, int itemCou
 
 
 #include "stdafx.h"
+#include "VendingMachine.h"
+#include "Snack.h"
+#include "Dispenser.h"
+#include <string>
+
+using namespace std;
 
 int main
 {
+	Snack dorito("Doritos" , 1.00);
 
+	return 0;
 }
 

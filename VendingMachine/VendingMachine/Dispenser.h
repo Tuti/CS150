@@ -18,7 +18,9 @@ class Dispenser
 	/* Constructors */
 public:
 	Dispenser();
+	Dispenser(string dispenserName, const bool isEmpty, const Snack snack);
 	Dispenser(string dispenserName, const int itemCount, const bool isEmpty, const Snack snack);
+
 
 	/* Destructors */
 	~Dispenser();

@@ -8,19 +8,17 @@ class Register
 {
 	/* Declarations */
 	double totalMoney;
-	double inputAmount;
-	double amountReturned;
 
+public:
 	/* Constructors */
 	Register();
-	Register(const double totalMoney, const double inputAmount, const double amountReturned);
+	Register(const double totalMoney);
 
 	/* Destructors */
 	~Register();
 
 	/* Getters */
 	double getTotalMoney();
-	double getInputAmount();
 	double getAmountReturned();
 
 	/* Setters */
@@ -29,7 +27,8 @@ class Register
 	void setAmountReturned(const double amountReturned);
 
 	/* Functions */
-
-
+	bool isEnough(double input, double cost);
+	void removeMoney(double money);
+	void addMoney(double money);
 };
 
