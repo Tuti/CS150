@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/*
 class Movie
 {
 	//Data Declarations
@@ -31,3 +32,4 @@ public:
 
 	//Functions
 };
+*/

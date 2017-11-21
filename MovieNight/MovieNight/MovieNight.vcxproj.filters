@@ -24,12 +24,18 @@
     <ClInclude Include="Movie.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="MovieUpdated.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MovieNight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieNightUpdated.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
