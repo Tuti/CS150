@@ -1,7 +1,4 @@
 #pragma once
-// MovieNight.h : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include <string>
 
@@ -33,7 +30,4 @@ public:
 	void setRunningTime(const int runningTime);
 
 	//Functions
-
-
-
 };
