@@ -1,2 +1,5 @@
 ﻿  Polynomial.cpp
+c:\users\josie\github\cs150\finalproject\finalproject\polynomial.cpp(139): warning C4018: '<': signed/unsigned mismatch
+  Driver.cpp
+  Generating Code...
   FinalProject.vcxproj -> C:\Users\Josie\GitHub\cs150\FinalProject\Debug\FinalProject.exe

@@ -7,10 +7,18 @@ using namespace std;
 
 class Term
 {
+	
+	//Private Variables
 	string variable;
 	int coefficent;
-	double exponent;
+	int exponent;
 	bool isPositive;
+
+	//Private Functions 
+	int compareVariable(Term term);
+	int compareVariable(string var1, string var2);
+	int compareExponent(Term term);
+	int compareExponent(int exponent1, int exponent2);
 
 public:
 
@@ -30,8 +38,16 @@ public:
 	void setExponent(const int exponent);
 	void setIsPositive(const bool isPositive);
 
-	//Functions
+	//Equals
+	bool equals(Term &term);
+
+	//toString
 	string toString();
+
+	//Functions
+	int compare(Term term);
+	bool likeTerm(Term term);
+
 
 };
 
@@ -40,6 +56,7 @@ class Polynomial
 	//Data Fields
 	vector<Term> poly;
 	
+public:
 	//Constructors 
 	Polynomial();
 	Polynomial(const vector<Term> polynomial);
@@ -57,9 +74,10 @@ class Polynomial
 	void setPolynomial(const vector<Term> polynomial);
 
 	//Functions
-	Polynomial addPolynomial(const Polynomial poly);
-	Polynomial addPolynomial(const vector<Term> poly);
-	
+	Polynomial add(const Polynomial poly);
+	Polynomial add(const vector<Term> poly);
+	int compare(Term term);
+	void sort();
 };
 
 
