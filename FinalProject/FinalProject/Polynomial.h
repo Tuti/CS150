@@ -7,7 +7,6 @@ using namespace std;
 
 class Term
 {
-	
 	//Private Variables
 	string variable;
 	int coefficent;
@@ -24,12 +23,12 @@ public:
 
 	//Constructors 
 	Term();
-	Term(const int coefficent, const string variable, const int exponent, bool isPositive);
+	Term(const int coefficent, const string variable, const int exponent);
 
 	//Getters 
 	string getVariable();
 	int getCoefficent();
-	double getExponent();
+	int getExponent();
 	bool getIsPositive();
 
 	//Setters 
@@ -47,8 +46,7 @@ public:
 	//Functions
 	int compare(Term term);
 	bool likeTerm(Term term);
-
-
+	Term add(Term term);
 };
 
 class Polynomial
@@ -57,6 +55,7 @@ class Polynomial
 	vector<Term> poly;
 	
 public:
+
 	//Constructors 
 	Polynomial();
 	Polynomial(const vector<Term> polynomial);
@@ -74,9 +73,8 @@ public:
 	void setPolynomial(const vector<Term> polynomial);
 
 	//Functions
-	Polynomial add(const Polynomial poly);
-	Polynomial add(const vector<Term> poly);
-	int compare(Term term);
+	vector<Term> add(Polynomial poly);
+	//vector<Term> add(vector<Term> poly); 
 	void sort();
 };
 

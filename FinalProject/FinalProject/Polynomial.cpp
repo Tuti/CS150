@@ -22,30 +22,53 @@ Term::Term()
 	this->isPositive = true;
 }
 
-Term::Term(const int coefficent, const string variable, const int exponent, bool isPositive)
+Term::Term(const int coefficent, const string variable, const int exponent)
 {
+	this->coefficent = coefficent;
 	this->variable = variable;
-	this->exponent = coefficent;
-	this->coefficent = exponent;
-	this->isPositive = isPositive;
+	this->exponent = exponent;
+	
+	if (coefficent < 0)
+	{
+		this->isPositive = false;
+	}
+	else
+	{
+		this->isPositive = true;
+	}
 }
 
 //Getters 
+
+/*
+	Returns this variable
+
+*/
 string Term::getVariable()
 {
 	return this->variable;
 }
 
+
+/*
+	Returns coefficent
+*/
 int Term::getCoefficent()
 {
 	return this->coefficent;
 }
 
-double Term::getExponent()
+/*
+	returns exponent
+*/
+int Term::getExponent()
 {
 	return this->exponent;
 }
 
+/*
+	returns isPositive
+*/
 bool Term::getIsPositive()
 {
 	return this->isPositive;
@@ -75,6 +98,7 @@ void Term::setIsPositive(const bool isPositive)
 //Equals 
 bool Term::equals(Term &term)
 {
+
 	return this->getCoefficent() == term.getCoefficent() &&
 		this->getVariable().compare(term.getVariable()) &&
 		this->getExponent() == term.getExponent();
@@ -88,50 +112,59 @@ string Term::toString()
 	
 	if (coeff < 0)
 	{
-		coeff *= -1;
+		coeff =  coeff * -1;
 		this->isPositive = false;
 	}
-	ss << to_string(this->getCoefficent()) << this->getVariable() << "^" << this->getExponent();
+	ss << to_string(coeff) << this->getVariable() << "^" << this->getExponent();
 
 	return ss.str();
 }
 
 //Functions 
+
+/*
+	Finds if passed in term is a like term with this term
+*/
 bool Term::likeTerm(Term term)
 {
-	return this->getVariable().compare(term.getVariable()) &&
+	return this->getVariable() == term.getVariable() &&
 		this->getExponent() == term.getExponent();
-
 }
 
+/* 
+	Helper class to start recursive compareVariable
+*/
 int Term::compareVariable(Term term)
 {
 	return compareVariable(this->getVariable(), term.getVariable());
 }
 
+/*
+	Recursive call that compares variable and determines position based on return value 
+*/
 int Term::compareVariable(string var1, string var2)
 {
 	if (var1.length() < 1 || var2.length() < 1)
 	{
 		return 0;
 	}
+	else if (var1.at(0) < var2.at(0))
+	{
+		return -1;
+	}
+	else if (var1.at(0) > var2.at(0))
+	{
+		return 1;
+	}
 	else
 	{
-		if (var1.at(0) < var2.at(0))
-		{
-			return -1;
-		}
-		else if (var1.at(0) > var2.at(0))
-		{
-			return 1;
-		}
-		else
-		{
-			return compareVariable(var1.substr(1), var2.substr(1));
-		}
+		return compareVariable(var1.substr(1), var2.substr(1));
 	}
 }
 
+/*
+	used in compare, finds which exponent is larger
+*/
 int Term::compareExponent(Term term)
 {
 	return compareExponent(this->getExponent(), term.getExponent());
@@ -139,28 +172,47 @@ int Term::compareExponent(Term term)
 
 int Term::compareExponent(int exponent1, int exponent2)
 {
-	if (exponent1 > exponent2)
+	if (exponent1 < exponent2)
 	{
-		return -1;
+		return 1; //exponent1 moves left
 	}
-	else if (exponent1 < exponent2)
+	else if (exponent1 > exponent2)
 	{
-		return 1;
+		return -1; //exponent2 stays
 	}
 	else
 	{
-		return 0;
+		return 0; //equal, nothing happens
 	}
 }
 
+/* 
+	adds 2 terms together
+*/
+Term Term::add(Term term)
+{
+	Term term1(this->getCoefficent() + term.getCoefficent(), this->getVariable(), this->getExponent());
+
+	return term1;
+}
+
+/* 
+	compares term
+*/
 int Term::compare(Term term)
 {
+	int result;
 
+	result = compareVariable(term);
+	if (result == 0)
+	{
+		result = compareExponent(term);
+	}
+
+	return result;
 }
 
 /* End of Class Term Definition */
-
-
 
 /* Start of Class Polynomial Defintion */
 
@@ -179,6 +231,7 @@ Polynomial::Polynomial(const vector<Term> polynomial)
 //Equals
 bool Polynomial::equals(const Polynomial polynomial)
 {
+	//TODO Equals function
 	return false;
 }
 
@@ -189,7 +242,17 @@ string Polynomial::toString()
 	{
 		return "";
 	}
+
 	stringstream ss;
+
+	if (!poly[0].getIsPositive())
+	{
+		ss << "-" << poly[0].toString();
+	}
+	else
+	{
+		ss << poly[0].toString();
+	}
 
 	for (int i = 1; i < this->poly.size(); i++)
 	{
@@ -220,29 +283,74 @@ void Polynomial::setPolynomial(const vector<Term> polynomial)
 }
 
 //Functions
-Polynomial Polynomial::add(const Polynomial poly)
+
+/*
+	adds a polynomial object together
+*/
+vector<Term> Polynomial::add(Polynomial polynomial)
 {
+	vector<Term> addedTo = this->getPolynomial();
+	vector<Term> addedFrom = polynomial.getPolynomial(); //vector from passed in parameter
+	vector<Term> finished = vector<Term>();
 
+	cout << addedTo.size() << endl;
+	cout << addedFrom.size() << endl;
 
+	
+	for (int i = 0; i < addedTo.size(); i++)
+	{
+		cout << "Inside 1st for loop" << endl;
+		for (int j = 0; j < addedFrom.size(); j++)
+		{
+			cout << "Inside 2nd forloop" << endl;
+			cout << addedTo[i].toString() << endl;
+			cout << addedFrom[j].toString() << endl;
 
-
-	return Polynomial();
+			if (addedTo[i].likeTerm(addedFrom[j]) == 1)
+			{
+				cout << "Like term found" << endl;
+				Term term = addedTo[i].add(addedFrom[j]);
+				cout << term.toString() << endl;
+				finished.push_back(term);
+				addedFrom.erase(addedFrom.begin() + j);
+			}
+		}
+	}
+	
+	for (int i = 0; i < finished.size(); i++)
+	{
+		cout << finished[i].toString() << " ";
+	}
+	cout << endl;
+	return finished;
 }
 
-Polynomial Polynomial::add(const vector<Term> poly)
-{
 
-
-
-
-
-	return Polynomial();
-}
-
+/*
+	sorts polynomial 
+*/
 void Polynomial::sort()
 {
-
+	//BubbleSort Algorithm
+	vector<Term> sorted = vector<Term>();
+	Term temp;
+	bool swapped;
+	int result = 0;
+	
+	do
+	{
+		swapped = false;
+		for (int i = 0; i < this->poly.size() - 1; i++)
+		{
+			result = poly[i].compare(poly[i + 1]);
+			if (result == 1)
+			{
+				temp = poly[i];
+				poly[i] = poly[i + 1];
+				poly[i + 1] = temp;
+				swapped = true;
+			}
+		}
+	} while (swapped);
 }
-
-/* End of Class Polynomial Defintion */
 

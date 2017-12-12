@@ -1,5 +1,3 @@
-﻿  Polynomial.cpp
-c:\users\josie\github\cs150\finalproject\finalproject\polynomial.cpp(139): warning C4018: '<': signed/unsigned mismatch
-  Driver.cpp
-  Generating Code...
+﻿  Driver.cpp
+c:\users\josie\github\cs150\finalproject\finalproject\driver.cpp(97): warning C4715: 'buildPolynomial': not all control paths return a value
   FinalProject.vcxproj -> C:\Users\Josie\GitHub\cs150\FinalProject\Debug\FinalProject.exe
